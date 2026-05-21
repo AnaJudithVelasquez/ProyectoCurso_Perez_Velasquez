@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Editar Venta</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body class="fondo-editar-venta">
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg p-5 rounded-4 border-0 card-editar">
+
+        <h1 class="text-center text-success fw-bold mb-4">
+
+            ✏️ Editar Venta
+
+        </h1>
+
+        <form action="/actualizar-venta/<%= venta.id %>" method="POST">
+
+            <!-- PRODUCTO -->
+            <div class="mb-3">
+
+                <label class="form-label fw-bold">
+                    Producto
+                </label>
+
+                <select name="producto_id"
+                        class="form-select input-editar"
+                        required>
+
+                    <% productos.forEach(producto => { %>
+
+                        <option
+                            value="<%= producto.id %>"
+                            <%= producto.id == venta.producto_id ? 'selected' : '' %>
+                        >
+
+                            <%= producto.nombre %>
+                            | 💰 $<%= producto.precio %>
+                            | 📦 Stock: <%= producto.stock %>
+
+                        </option>
+
+                    <% }) %>
+
+                </select>
+
+            </div>
+
+            <!-- CANTIDAD -->
+            <div class="mb-4">
+
+                <label class="form-label fw-bold">
+                    Cantidad
+                </label>
+
+                <input
+                    type="number"
+                    name="cantidad"
+                    value="<%= venta.cantidad %>"
+                    class="form-control input-editar"
+                    required
+                >
+
+            </div>
+
+            <div class="d-flex justify-content-between">
+
+                <a href="/ventas"
+                   class="btn btn-secondary btn-volver">
+
+                   ⬅️ Volver
+
+                </a>
+
+                <button class="btn btn-success btn-guardar">
+
+                    ✅ Actualizar Venta
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
