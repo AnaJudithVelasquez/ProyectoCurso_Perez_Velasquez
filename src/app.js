@@ -390,46 +390,6 @@ app.post('/finalizar-venta', (req, res) => {
 
 });
 
-// API PRODUCTOS
-app.get('/api/productos', (req, res) => {
-
-    db.query(
-        'SELECT * FROM productos',
-        (err, resultados) => {
-
-            if (err) {
-
-                return res.status(500).json(err);
-
-            }
-
-            res.json(resultados);
-
-        }
-    );
-
-});
-
-// API VENTAS
-app.get('/api/ventas', (req, res) => {
-
-    db.query(
-        'SELECT * FROM ventas',
-        (err, resultados) => {
-
-            if (err) {
-
-                return res.status(500).json(err);
-
-            }
-
-            res.json(resultados);
-
-        }
-    );
-
-});
-
 // SERVIDOR
 app.listen(app.get('port'), () => {
     console.log('Servidor corriendo en http://localhost:3000');
