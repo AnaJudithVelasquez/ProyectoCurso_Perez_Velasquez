@@ -289,13 +289,13 @@ app.post('/agregar-a-venta', (req, res) => {
 
             if (!producto.estado) {
 
-                return res.send('❌ Producto inactivo');
+                return res.redirect('/ventas?mensaje=inactivo');
 
             }
 
             if (producto.stock < cantidad) {
 
-                return res.send('❌ Stock insuficiente');
+                return res.redirect('/ventas?mensaje=stock');
 
             }
 
